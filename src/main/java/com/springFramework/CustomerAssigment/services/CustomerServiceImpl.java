@@ -3,10 +3,7 @@ package com.springFramework.CustomerAssigment.services;
 import com.springFramework.CustomerAssigment.domain.Customer;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -21,6 +18,33 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> listAllCustomers() {
         return new ArrayList<>(customers.values());
+    }
+
+    @Override
+    public Customer getCustomerById(Integer id){
+        return customers.get(id);
+    }
+
+    @Override
+    public Customer saveOrUpdateCustomer(Customer customer) {
+        if(customer != null){
+            if(customer.getId() == null){
+                customer.setId(getNextKey());
+            }
+            customers.put(customer.getId(), customer);
+            return customer;
+        }else{
+            throw new RuntimeException("Customer can't be nill");
+        }
+    }
+
+    @Override
+    public void deleteCustomer(Integer id) {
+        customers.remove(id);
+    }
+
+    private int getNextKey() {
+        return Collections.max(customers.keySet())+1;
     }
 
 

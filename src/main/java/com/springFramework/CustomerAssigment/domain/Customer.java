@@ -2,20 +2,35 @@ package com.springFramework.CustomerAssigment.domain;
 
 public class Customer {
 
-    private int id;
+    private Integer  id;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
     private String addressLineOne;
     private String city;
-     private String zipCode;
+    private String zipCode;
 
-    public int getId() {
+    public Customer(Integer id, String firstName, String lastName, String email, String phoneNumber, String addressLineOne, String city, String zipCode) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.addressLineOne = addressLineOne;
+        this.city = city;
+        this.zipCode = zipCode;
+    }
+
+    public Customer() {
+
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
