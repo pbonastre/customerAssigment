@@ -1,8 +1,17 @@
 package com.springFramework.CustomerAssigment.domain;
 
-public class Customer {
+import javax.persistence.*;
 
+@Entity
+public class Customer implements DomainObject{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer  id;
+
+    @Version
+    private Integer version;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -89,5 +98,14 @@ public class Customer {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
 
 }
